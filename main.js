@@ -84,7 +84,7 @@ download.onclick = function(){
 }
 clear.onclick = function(){
     context.fillStyle = "#fff";
-    context.fillRect(100,0,drawingBoard.width,drawingBoard.height);
+    context.fillRect(0,0,drawingBoard.width,drawingBoard.height);
 }
 //监听用户鼠标事件 
     //画画/擦
@@ -93,37 +93,71 @@ var lastPoint = {
     x:0,
     y:0
 }
-
-drawingBoard.onmousedown = function(aaa){
-    pressed = true;
-    var x = aaa.clientX;
-    var y = aaa.clientY; 
-    lastPoint.x = x;
-    lastPoint.y = y;
-    if(eraserEnabled)
-        drawCircle(x,y,myLineWidth/2,eraserColor);
-    else{
-        drawCircle(x,y,myLineWidth/2,myColor);
-    }
-        
-}
-drawingBoard.onmousemove = function(aaa){
-    if(pressed){
-        var x = aaa.clientX;
-        var y = aaa.clientY; 
-        if(eraserEnabled){
-            drawCircle(x,y,myLineWidth/2,eraserColor);
-            drawLine(lastPoint.x,lastPoint.y,x,y,eraserColor);
-        }
-        else{
-            drawCircle(x,y,myLineWidth/2,myColor);
-            drawLine(lastPoint.x,lastPoint.y,x,y,myColor);
-        }
+if(document.body.ontouchstart !== undefined){
+    drawingBoard.ontouchstart = function(aaa){
+        pressed = true;
+        var x = aaa.touches[0].clientX;
+        var y = aaa.touches[0].clientY; 
         lastPoint.x = x;
         lastPoint.y = y;
-    }    
+        if(eraserEnabled)
+            drawCircle(x,y,myLineWidth/2,eraserColor);
+        else{
+            drawCircle(x,y,myLineWidth/2,myColor);
+        } 
+    }
+    drawingBoard.ontouchmove = function(aaa){
+        if(pressed){
+            var x = aaa.touches[0].clientX;
+            var y = aaa.touches[0].clientY; 
+            if(eraserEnabled){
+                drawCircle(x,y,myLineWidth/2,eraserColor);
+                drawLine(lastPoint.x,lastPoint.y,x,y,eraserColor);
+            }
+            else{
+                drawCircle(x,y,myLineWidth/2,myColor);
+                drawLine(lastPoint.x,lastPoint.y,x,y,myColor);
+            }
+            lastPoint.x = x;
+            lastPoint.y = y;
+        }
+    }
+    drawingBoard.ontouchend = function(){
+        pressed = false;
+    }
+}else{
+    drawingBoard.onmousedown = function(aaa){
+        pressed = true;
+        var x = aaa.clientX;
+        var y = aaa.clientY; 
+        lastPoint.x = x;
+        lastPoint.y = y;
+        if(eraserEnabled)
+            drawCircle(x,y,myLineWidth/2,eraserColor);
+        else{
+            drawCircle(x,y,myLineWidth/2,myColor);
+        }       
+    }
+    drawingBoard.onmousemove = function(aaa){
+        if(pressed){
+            var x = aaa.clientX;
+            var y = aaa.clientY; 
+            if(eraserEnabled){
+                drawCircle(x,y,myLineWidth/2,eraserColor);
+                drawLine(lastPoint.x,lastPoint.y,x,y,eraserColor);
+            }
+            else{
+                drawCircle(x,y,myLineWidth/2,myColor);
+                drawLine(lastPoint.x,lastPoint.y,x,y,myColor);
+            }
+            lastPoint.x = x;
+            lastPoint.y = y;
+        }    
+    }
+    drawingBoard.onmouseup = function(){
+        pressed = false;
+    }
+    
 }
-drawingBoard.onmouseup = function(){
-    pressed = false;
-}
+
 

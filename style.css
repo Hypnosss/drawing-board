@@ -12,7 +12,8 @@
 #canvas{
     background-color: #fff;
     display: block;
-    float: right;
+    float: left;
+    margin-left: 100px;
     border: 1px solid black;
 }
 
