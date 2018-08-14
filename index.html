@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Drawing Board</title>
+    <link rel = "stylesheet" href = "./style.css">
+</head>
+<body>
+    <canvas id = "canvas"></canvas>
+    <div class = "buttons">
+        <svg id = "pen" class = "icon active" aria-hidden = "true">
+            <use xlink:href="#icon-pen"></use>
+        </svg>
+        <ul>
+            <li><h4>R:</h4><textarea id = "red">0</textarea></li>
+            <li><h4>G:</h4><textarea id = "green">0</textarea></li>
+            <li><h4>B:</h4><textarea id = "blue">0</textarea></li>
+        </ul>
+        <svg id = "eraser" class = "icon" aria-hidden = "true">
+            <use xlink:href="#icon-eraser1"></use>
+        </svg>
+        <h4>width</h4><textarea id = "LineWidth">10</textarea>
+        <h4>Clear</h4>
+        <svg id = "clear" class = "icon" aria-hidden = "true">
+            <use xlink:href="#icon-custom-delete"></use>
+        </svg>
+        <h4>Down<br>load</h4>
+        <svg id = "download"class = "icon" aria-hidden = "true">
+            <use xlink:href="#icon-download"></use>
+        </svg>
+    </div>
+
+    <script src = "./main.js"></script>
+    <script src = "http://at.alicdn.com/t/font_791249_65g92jubap9.js"></script>
+</body>
+</html>

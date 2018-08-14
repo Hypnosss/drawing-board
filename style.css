@@ -1,0 +1,45 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#canvas{
+    background-color: #fff;
+    display: block;
+    float: right;
+    border: 1px solid black;
+}
+
+.icon {
+    width: 2em; height: 2em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+    margin:0 10px;
+}
+
+.buttons{
+    position: fixed;
+    top:10px;
+    left: 10px;
+    border: 1px solid red;
+}
+
+.active{
+    fill:red;
+}
+
+.buttons ul{
+}
+
+textarea{
+    width: 2.5em;
+    height: 1.2em;
+    resize: none;
+}
