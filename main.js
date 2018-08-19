@@ -10,23 +10,39 @@ var lineWidth = document.getElementById("LineWidth")
 var RGB = [0,0,0];
 var myColor = "rgba("+ RGB[0] + "," + RGB[1] + "," + RGB[2] + ",1)";
 colorR.oninput = function(){
-    RGB[0] = colorR.value; 
+    if(colorR.value < 0){
+        RGB[0] = 0; 
+    }else{
+        RGB[0] = colorR.value; 
+    } 
     myColor = "rgba("+ RGB[0] + "," + RGB[1] + "," + RGB[2] + ",1)"
-    console.log(RGB[0]); 
 }
 colorG.oninput = function(){
-    RGB[1] = colorG.value;
+    if(colorR.value < 0){
+        RGB[1] = 0; 
+    }else{
+        RGB[1] = colorR.value; 
+    } 
     myColor = "rgba("+ RGB[0] + "," + RGB[1] + "," + RGB[2] + ",1)"
-    //console.log(RGB[0],RGB[1],RGB[2]); 
 }
 colorB.oninput = function(){
-    RGB[2] = colorB.value;
+    if(colorR.value < 0){
+        RGB[2] = 0; 
+    }else{
+        RGB[2] = colorR.value; 
+    } 
     myColor = "rgba("+ RGB[0] + "," + RGB[1] + "," + RGB[2] + ",1)"
-    //console.log(RGB[0],RGB[1],RGB[2]); 
 }
 var myLineWidth = 10;
 lineWidth.oninput = function(){
-    myLineWidth = lineWidth.value;
+    if(lineWidth.value != ""){
+        if(lineWidth.value <= 0){
+            console.log(lineWidth.value);
+            myLineWidth = 10;
+        }else{
+            myLineWidth = lineWidth.value;
+        }  
+    }
 }
 
 //画板跟随窗口大小改变
